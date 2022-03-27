@@ -82,4 +82,8 @@ alter table `project_user`
 alter table `project_user`
 	add constraint `fk_project_user_to_project`
 		foreign key (project_id) references `project`(id);
-
+INSERT INTO role(id, name, description) VALUES(1, 'ADMIN', 'Quản trị hệ thống');
+INSERT INTO role(id, name, description) VALUES(2, 'LEADER', 'Quản lý dự án');
+INSERT INTO role(id, name, description) VALUES(3, 'MEMBER', 'Thành viên');
+INSERT INTO user(id, email, password, name, address, phone, role_id) VALUES('hoan26@gmail.com', '123','Nguyễn Việt Hoàn','Ninh Bình', '0966712112',1);
+INSERT INTO user(id, email, password, name, address, phone, role_id) VALUES('hiep261@gmail.com', '12345','Phạm Bá Hiệp','Ninh Bình', '0966712334',2);
