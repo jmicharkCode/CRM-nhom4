@@ -39,7 +39,7 @@
             <table class="table mb-0 thead-border-top-0">
                 <thead>
                     <tr>
-                        <th>STT</th>
+                        <th>ID</th>
 						<th>Name</th>
 	                     <th>Email</th>
 	                     <th>Address</th>
@@ -55,18 +55,28 @@
                  			</tr>
                  		</c:when>
                  		<c:otherwise>
-                 			<c:forEach var="user" items="${users}" >
+                 			<c:forEach var="user" items="${users}"  >
 	                 			<tr>
 		                           <td>
-		                               ${user.id }
+		                               ${user.id}
 		                           </td>
 		                           <td>${user.fullname }</td>
 		                           <td>${user.email }</td>
 		                           <td>${user.address }</td>
 		                           <td>${user.phone }</td>
 		                           <td>
-		                           	<a href="" class="text-muted"><i class="material-icons">settings</i></a>
-		                           	<a href="<c:url value="#>" />?id=${user.id}" class="text-muted"><i class="material-icons">delete</i></a>
+		                           	<form
+									action='<c:url value="<%=UrlConst.USER_UPDATE%>"></c:url>'
+									method="get">
+									<input type="hidden" name="id" value="${user.id}"></input>
+									<button type="submit"  class="text-muted"><i class="material-icons">edit</i></button>
+		                           	<form
+									action='<c:url value="<%=UrlConst.USER_DELETE%>"></c:url>'
+									method="get">
+									<input type="hidden" name="id" value="${user.id}"></input>
+									<button type="submit" class="text-muted"><i class="material-icons">delete</i></button>
+								</form>
+		                           	
 		                           </td>
 	                    		</tr>
                  			</c:forEach>

@@ -56,15 +56,8 @@
                             <label for="address">Address:</label>
                             <textarea type="text" class="form-control" name="address" id="address" aria-label="With textarea"></textarea>
                         </div>
-                        <div class="form-group">
-                                <label for="role">Role</label>
-                                <select id="role" name="role" data-toggle="select" class="form-control">
-                                    <option selected="" value="1">ADMIN</option>
-                                    <option value="2">LEADER</option>
-                                    <option value="3">MEMBER</option>
-                                </select>
-                                
-                            </div>
+                       
+                        
                         <button class="btn btn-primary w-25 justify-content-center" type="submit" class="btn btn-primary">Add</button>
                     </form>
                 </div>

@@ -12,7 +12,7 @@
             <div class="navbar-collapse collapse" id="navbarsExample03">
                 <ul class="nav navbar-nav flex">
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.html">
+                        <a class="nav-link active" href="http://localhost:8080/java16-crm-nhom-4/home">
                             Home</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -36,7 +36,7 @@
                             <a class="dropdown-item" href="http://localhost:8080/java16-crm-nhom-4/user">
                                 User List
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="http://localhost:8080/java16-crm-nhom-4/user-add">
                                 Create User
                             </a>
                         </div>

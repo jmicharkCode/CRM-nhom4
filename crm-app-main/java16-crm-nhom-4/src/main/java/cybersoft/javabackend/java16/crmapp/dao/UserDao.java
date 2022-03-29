@@ -15,7 +15,7 @@ public class UserDao {
 
 	public List<User> getAllUser() {
 		List<User> list = new ArrayList<User>();
-		String query = "select id, email, password, name, address, phone, role_id from user";
+		String query = "select id, email, password, name, address, phone from user";
 		Connection connection = MySQLConnection.getConnection();
 		
 		try {
@@ -23,13 +23,14 @@ public class UserDao {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
-				list.add(new User(result.getInt(1),
+				list.add(new User(
+						result.getString(1),
 						result.getString(2),
 						result.getString(3),
 						result.getString(4),
 						result.getString(5),
-						result.getString(6),
-						result.getInt(7)
+						result.getString(6)
+						
 						));
 			}
 			
@@ -40,8 +41,8 @@ public class UserDao {
 		} 
 		return list;
 	}
-	public int addUser(User user) {
-		String query = "insert into user(email, password, name, address, phone, role_id) values (?,?,?,?,?,?)";
+	public boolean addUser(User user) {
+		String query = "insert into user(email, password, name, address, phone) values (?,?,?,?,?)";
         Connection connection = MySQLConnection.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
@@ -50,13 +51,40 @@ public class UserDao {
 			statement.setString(3, user.getFullname());
 			statement.setString(4, user.getAddress());
 			statement.setString(5, user.getPhone());
-			statement.setInt(6, user.getRole());
-			ResultSet result = statement.executeQuery();
+			int res =  statement.executeUpdate();
+			if(res > 0) return true;
 		} catch (SQLException e) {
-			// TODO: 
-			System.out.println("Error in select query.");
+			
+			System.out.println("Error!!.");
 			e.printStackTrace();
 		} 
-		return 0;
+		return false;
+	}
+	public void delete(String id) {
+		String query = "DELETE FROM crm.user WHERE id = ?";
+		try (Connection conn = MySQLConnection.getConnection()) {
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, id);
+			statement.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void update(String id, String name, String email, String address, String phone) {
+
+		try (Connection conn = MySQLConnection.getConnection()) {
+			String query = "UPDATE crm.user set name = ?, email = ?, phone = ?, address = ?  WHERE id = ?";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, name);
+			statement.setString(2, email);
+			statement.setString(3, phone);
+			statement.setString(4, address);
+			
+			statement.setString(5, id);
+			statement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 }
