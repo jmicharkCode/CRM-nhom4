@@ -61,7 +61,7 @@ public class UserDao {
 		return false;
 	}
 	public void delete(String id) {
-		String query = "DELETE FROM crm.user WHERE id = ?";
+		String query = "DELETE FROM user WHERE id = ?";
 		try (Connection conn = MySQLConnection.getConnection()) {
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, id);
