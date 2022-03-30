@@ -70,6 +70,9 @@
 									method="get">
 									<input type="hidden" name="id" value="${user.id}"></input>
 									<button type="submit"  class="text-muted"><i class="material-icons">edit</i></button>
+						 </form>
+									</td>
+									<td>
 		                           	<form
 									action='<c:url value="<%=UrlConst.USER_DELETE%>"></c:url>'
 									method="get">
