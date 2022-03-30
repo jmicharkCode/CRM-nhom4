@@ -41,7 +41,7 @@ public class UserServlet extends HttpServlet {
 			userDao.delete(req.getParameter("id"));
 			req.setAttribute("users", userDao.getAllUser());
 			req.getRequestDispatcher(JspConst.USER_DASHBOARD).forward(req, resp);
-			break;
+			
 		case UrlConst.USER_UPDATE:
 			String id = req.getParameter("id");
 			req.setAttribute("id", id);
